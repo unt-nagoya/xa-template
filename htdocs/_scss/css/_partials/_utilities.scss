@@ -1,0 +1,51 @@
+/* ------------------------
+  utilities Classes
+------------------------ */
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+.clearfix {
+  *zoom: 1;
+}
+
+/* Outline用 非表示 */
+.u-blind {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+.u-blind.focusable:active,
+.u-blind.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+/* SP用 表示・非表示 */
+.u-visible-sp {
+  display: none !important;
+}
+@include max-sp {
+  .u-hidden-sp {
+    display: none !important;
+  }
+  .u-visible-sp {
+    display: block !important;
+  }
+  img.u-visible-sp {
+    display: inline-block !important;
+  }
+}

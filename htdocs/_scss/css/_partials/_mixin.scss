@@ -1,0 +1,82 @@
+// -----------------------------
+//  @mixin
+//------------------------------
+
+// 画像置換
+@mixin replace($w: 0, $h: 0, $display: block, $position: left) {
+  display: #{$display};
+  overflow: hidden;
+  @if $w != 0 {
+    width: #{$w};
+    height: #{$h};
+  }
+  white-space: nowrap;
+  font-size: 0;
+  text-indent: 100%;
+
+  @if $position == center {
+    margin: auto;
+  }
+}
+
+// 擬似要素
+@mixin pseudo($w: 0, $h: 0, $direction: left, $directionPosition1: 0, $directionPosition2: 0, $directionPosition3: 0, $directionPosition4: 0) {
+  content: '';
+  display: block;
+  position: absolute;
+  margin: auto;
+
+  @if $direction == left {
+    left: #{$directionPosition1};
+    top: #{$directionPosition2};
+    bottom: #{$directionPosition3};
+
+  } @else if $direction == right {
+    right: #{$directionPosition1};
+    top: #{$directionPosition2};
+    bottom: #{$directionPosition3};
+
+  } @else if $direction == center {
+    top: #{$directionPosition1};
+    right: #{$directionPosition2};
+    bottom: #{$directionPosition3};
+    left: #{$directionPosition4};
+  }
+
+  @if $w != 0 {
+    width: #{$w};
+    height: #{$h};
+  }
+}
+
+@mixin max-sp {
+  @include max-screen($bp-max-sp) {
+    @content;
+  };
+}
+
+@mixin min-pc {
+  @include min-screen($bp-min-pc) {
+    @content;
+  };
+}
+
+// media query
+@mixin max-screen($break-point) {
+  @media screen and (max-width: $break-point) {
+    @content;
+  }
+}
+
+@mixin min-screen($break-point) {
+  @media screen and (min-width: $break-point) {
+    @content;
+  }
+}
+
+@mixin screen($break-point-min, $break-point-max) {
+  @media screen and (min-width: $break-point-min) and (max-width: $break-point-max) {
+    @content;
+  }
+}
+

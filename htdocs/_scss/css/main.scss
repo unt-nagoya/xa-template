@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+/*
+* project_name
+* main.css
+*
+*/
+
+// Common Settings
+@import "_partials/setting";
+@import "_partials/mixin";
+@import "_partials/foundation";
+@import "_partials/utilities";
+@import "_partials/components";
+
+// Print Settings
+@import "_partials/print";
